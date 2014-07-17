@@ -38,6 +38,13 @@ module.exports = function(grunt) {
         }
       }
     }
+    ,cssmin: {
+    combine: {
+      files: {
+        'app/build/_bootstrap.css': ['bower_components/bootstrap/dist/css/bootstrap.min.css', 'bower_components/bootstrap/dist/css/bootstrap-theme.min.css']
+      }
+    }
+  }
 
 
 
@@ -47,6 +54,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-exec');
   grunt.loadNpmTasks('grunt-bower-concat');
-  grunt.registerTask('install', ['exec:install','bower_concat','uglify']);
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+
+  grunt.registerTask('install', ['exec:install','bower_concat','uglify','cssmin']);
 
 };
